@@ -58,8 +58,10 @@ export class Service {
             tableId:conf.appwriteTableId,
             rowId:slug
         });
+        return true;
     } catch (error) {
         console.log("Appwrite service :: deletePost :: error", error);
+        return false;
     }
   }
 
