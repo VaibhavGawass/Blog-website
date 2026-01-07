@@ -1,7 +1,9 @@
 import {useState,useEffect} from 'react'
-import {useNavigate, useParams} from 'react-router-dom'
+import {useNavigate, useParams,Link} from 'react-router-dom'
 import appwriteService from '../appwrite/config.js'
-
+import parse from "html-react-parser";
+import {Button,Container} from "../components"
+import { useSelector } from 'react-redux';
 
 export default function Post() {
   const [post,setPost] = useState(null);

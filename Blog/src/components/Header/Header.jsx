@@ -1,4 +1,4 @@
-import React from 'react'
+
 import {Container,Logo,LogoutBtn} from '../index'
 import { useSelector } from 'react-redux'
 import { useNavigate,Link } from 'react-router-dom'
@@ -30,7 +30,7 @@ export default function Header() {
     },
     {
       name: 'Add Post',
-      slug: '/add-post',
+      slug: '/add-posts',
       active: authStatus
     },
   ]

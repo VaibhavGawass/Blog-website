@@ -5,12 +5,16 @@ import { Container, PostCard } from '../components';
 export default function Home() {
     const [posts,setPosts] = useState([])
     useEffect(()=>{
-        appwriteService.getPosts().then((posts)=>{
-            setPosts(posts.rows)
+        appwriteService.getPosts().then((result)=>{
+            if(result && Array.isArray(result.rows)){
+              setPosts(result.rows);
+            }else{
+              setPosts([])
+            }
         })
     },[]);
 
-    if(posts.length === 0){
+    if(!posts || posts.length === 0){
         return (
           <div className="w-full py-8 mt-4 text-center">
             <Container>
@@ -30,11 +34,11 @@ export default function Home() {
     <div className='w-full py-8'>
         <Container>
             <div className='flex flex-wrap'>
-                {posts.map((post)=>{
-                    <div key={post.$id} className="p-2 w-1/4">
+                {posts.map((post)=>(
+                  <div key={post.$id} className="p-2 w-1/4">
                       <PostCard {...post} />
-                    </div>;
-                })}
+                      </div>
+                ))}
             </div>
         </Container>
     </div>
